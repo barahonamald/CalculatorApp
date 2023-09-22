@@ -17,6 +17,9 @@ public class CalculatorActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         Intent intent=getIntent();
         String str = intent.getStringExtra("message");
-        textView.setText("Hello "+str);
+        int first = intent.getIntExtra("firstNum", 0);
+        int second = intent.getIntExtra("secondNum", 0);
+        int sum = first + second;
+        textView.setText("The sum is " + sum);
     }
 }

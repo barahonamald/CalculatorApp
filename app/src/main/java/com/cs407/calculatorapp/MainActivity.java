@@ -19,13 +19,18 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, firstNumber.getText(), Toast.LENGTH_LONG).show();
         Toast.makeText(MainActivity.this, secondNumber.getText(), Toast.LENGTH_LONG).show();
 
-        //goToActivity(firstNumber.getText().toString());
+        // converts first & second strings inputted to ints
+        int first = Integer.parseInt(firstNumber.getText().toString());
+        int second = Integer.parseInt(secondNumber.getText().toString());
+
+        goToActivity(first, second);
     }
 
     public void goToActivity(int firstNum, int secondNum) {
-        //Intent intent=new Intent(this, CalculatorActivity.class);
-        //intent.putExtra("message", firstNum, "message", secondNum);
-      //  startActivity(intent);
+        Intent intent = new Intent(this, CalculatorActivity.class);
+        intent.putExtra("firstNum", firstNum);
+        intent.putExtra("secondNum", secondNum);
+        startActivity(intent);
     }
 
     @Override
