@@ -18,11 +18,13 @@ public class CalculatorActivity extends AppCompatActivity {
         Intent intent=getIntent();
 
         // gets both inputs
-        int first = intent.getIntExtra("firstNum", 0);
-        int second = intent.getIntExtra("secondNum", 0);
+        int total = intent.getIntExtra("total", -69);
+        if (total == -69) {
+            double newTotal = intent.getDoubleExtra("divide", 0.0);
+            textView.setText(""+newTotal);
+        }
+        else
+            textView.setText("" + total);
 
-        // sums and prints inputs
-        int sum = first + second;
-        textView.setText("The sum is " + sum);
     }
 }

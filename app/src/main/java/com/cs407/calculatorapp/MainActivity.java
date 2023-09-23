@@ -12,26 +12,84 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     public void addFunction(View view) {
-        Log.i("INFO", "Button Pressed");
-
+        // grabs inputted numbers
         EditText firstNumber = findViewById(R.id.firstNumber);
         EditText secondNumber = findViewById(R.id.secondNumber);
-        Toast.makeText(MainActivity.this, firstNumber.getText(), Toast.LENGTH_LONG).show();
-        Toast.makeText(MainActivity.this, secondNumber.getText(), Toast.LENGTH_LONG).show();
 
         // converts first & second strings inputted to ints
         int first = Integer.parseInt(firstNumber.getText().toString());
         int second = Integer.parseInt(secondNumber.getText().toString());
 
-        goToActivity(first, second);
+        // does function
+        int total = first + second;
+
+       goToActivity(total);
     }
 
-    public void goToActivity(int firstNum, int secondNum) {
+    public void subtractFunction(View view) {
+        // grabs inputted numbers
+        EditText firstNumber = findViewById(R.id.firstNumber);
+        EditText secondNumber = findViewById(R.id.secondNumber);
+
+        // converts first & second strings inputted to ints
+        int first = Integer.parseInt(firstNumber.getText().toString());
+        int second = Integer.parseInt(secondNumber.getText().toString());
+
+        // does function
+        int total = first - second;
+
+        goToActivity(total);
+    }
+
+    public void multiplyFunction(View view) {
+        // grabs inputted numbers
+        EditText firstNumber = findViewById(R.id.firstNumber);
+        EditText secondNumber = findViewById(R.id.secondNumber);
+
+        // converts first & second strings inputted to ints
+        int first = Integer.parseInt(firstNumber.getText().toString());
+        int second = Integer.parseInt(secondNumber.getText().toString());
+
+        // does function
+        int total = first * second;
+
+        goToActivity(total);
+    }
+
+    public void divideFunction(View view) {
+        // grabs inputted numbers
+        EditText firstNumber = findViewById(R.id.firstNumber);
+        EditText secondNumber = findViewById(R.id.secondNumber);
+
+        // converts first & second strings inputted to ints
+        double first = Integer.parseInt(firstNumber.getText().toString());
+        double second = Integer.parseInt(secondNumber.getText().toString());
+
+        // if divide by 0, prompts for new number
+        if (second == 0.0) {
+            Toast.makeText(MainActivity.this, "Cannot divide by 0. Choose new number.", Toast.LENGTH_LONG).show();
+        }
+        else {
+            // does function
+            double total = first / second;
+            goToActivity(total);
+        }
+    }
+
+    public void goToActivity(int total) {
         Intent intent = new Intent(this, CalculatorActivity.class);
 
         // stores inputted values for CalculatorActivity.java
-        intent.putExtra("firstNum", firstNum);
-        intent.putExtra("secondNum", secondNum);
+        intent.putExtra("total", total);
+
+        startActivity(intent);
+    }
+
+    public void goToActivity(double total) {
+        Intent intent = new Intent(this, CalculatorActivity.class);
+
+        // stores inputted values for CalculatorActivity.java
+        intent.putExtra("divide", total);
 
         startActivity(intent);
     }
