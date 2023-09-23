@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public void clickFunction(View view) {
+    public void addFunction(View view) {
         Log.i("INFO", "Button Pressed");
 
         EditText firstNumber = findViewById(R.id.firstNumber);
@@ -28,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToActivity(int firstNum, int secondNum) {
         Intent intent = new Intent(this, CalculatorActivity.class);
+
+        // stores inputted values for CalculatorActivity.java
         intent.putExtra("firstNum", firstNum);
         intent.putExtra("secondNum", secondNum);
+
         startActivity(intent);
     }
 

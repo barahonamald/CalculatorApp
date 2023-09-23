@@ -16,9 +16,12 @@ public class CalculatorActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView);
         Intent intent=getIntent();
-        String str = intent.getStringExtra("message");
+
+        // gets both inputs
         int first = intent.getIntExtra("firstNum", 0);
         int second = intent.getIntExtra("secondNum", 0);
+
+        // sums and prints inputs
         int sum = first + second;
         textView.setText("The sum is " + sum);
     }
